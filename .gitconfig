@@ -15,3 +15,6 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+[user]
+	name = Chase Conklin
+	email = developer@chasemconklin.com
