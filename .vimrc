@@ -44,6 +44,12 @@ nnoremap 0 g0
 nnoremap $ g$
 nnoremap gV `[v`]
 
+" Split Navigation
+nnoremap <C-h> <C-W><C-H>
+nnoremap <C-j> <C-W><C-J>
+nnoremap <C-k> <C-W><C-K>
+nnoremap <C-l> <C-W><C-L>
+
 " Leader Shortcuts
 let mapleader=","
 nnoremap <leader><space> :nohlsearch<CR>
