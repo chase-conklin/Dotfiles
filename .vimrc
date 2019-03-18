@@ -1,44 +1,63 @@
-syntax enable  				" enable syntax processing
-" Spaces & Tabs
-set tabstop=2  	            " number of visual spaces per TAB
-set softtabstop=2           " number of spaces in tab when editing
-set expandtab               " tabs are spaces
-set backspace=indent,eol,start " backspace through anything in insert mode
+syntax enable
+
+" =================
+"
+" General Settings
+"
+" =================
+
+" Set tab settings
+set tabstop=2
+set softtabstop=2
+set expandtab
+set backspace=indent,eol,start
+
+" =================
+"
 " UI Config
-set number                  " show line numbers
-set relativenumber          " show number lines relative to the cursor
-set showcmd                 " show command in bottom bar
-set wildmenu                " visual autocomplete for command menu
-set showmatch               " highlight matching [{()}]
+"
+" =================
+
+set number
+set relativenumber
+set showcmd
+set wildmenu
+set showmatch
 set noshowmode
 let g:indentLine_char='|'
+
 " Searching
-set incsearch               " search as characters are entered
-set hlsearch                " highlight matches
+set incsearch
+set hlsearch
+
 " Folding
-set foldenable              " enable folding
-set foldlevelstart=10       " open most folds by default
-set foldnestmax=10          " 10 nested fold max
-nnoremap <space> za         " space open/closes folds
-set foldmethod=indent       " fold based on indent level
+set foldenable
+set foldlevelstart=10
+set foldnestmax=10
+nnoremap <space> za
+set foldmethod=indent
+
 " Movement
-" move vertically by visual line
 nnoremap j gj
 nnoremap k gk
 nnoremap 0 g0
 nnoremap $ g$
-nnoremap gV `[v`]           " highlight last inserted text
+nnoremap gV `[v`]
+
 " Leader Shortcuts
-" leader is comma
 let mapleader=","
 nnoremap <leader><space> :nohlsearch<CR>
-" turn off search highlight
 nnoremap <leader>u :GundoToggle<CR>  "toggle gundo
-" Plugin Remapping
 map <C-n> :NERDTreeToggle<CR> " toggle nerd tree
 cnoreabbrev Ack Ack!
-nnoremap <Leader>a :Ack!<Space>
+nnoremap <leader>a :Ack!<Space>
+
+" ==================
+"
 " Plugins
+" 
+" ==================
+
 if executable ('ag')
   let g:ctrlp_user_command = 'fd . -t file'
   let g:ackprg = 'ag --vimgrep'
