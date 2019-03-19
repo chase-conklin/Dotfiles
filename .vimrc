@@ -8,7 +8,6 @@ syntax enable
 
 call plug#begin('~/.vim/plugged')
 
-
 " Utilities
 Plug 'sjl/gundo.vim'
 Plug 'scrooloose/nerdtree'
@@ -26,6 +25,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'lumiliet/vim-twig'
 Plug 'stanangeloff/php.vim'
 Plug 'vim-syntastic/syntastic'
+
 call plug#end()
 
 " =================
@@ -94,8 +94,15 @@ let g:indentLine_char='|'
 map <C-n> :NERDTreeToggle<CR>
 
 " Fzf Settings
-nnoremap <leader>f :FZF<CR>
+nnoremap <leader>f :Files<CR>
 nnoremap <leader>a :Ag<CR>
+
+" Signify Settings
+let g:signify_vcs_list = [ 'git' ]
+highlight SignColumn ctermbg=NONE cterm=NONE guibg=NONE gui=NONE
+highlight SignifySignAdd cterm=bold ctermbg=none ctermfg=10
+highlight SignifySignDelete cterm=bold ctermbg=none  ctermfg=9
+highlight SignifySignChange cterm=bold ctermbg=none ctermfg=11
 
 " Gundo Settings
 nnoremap <leader>u :GundoToggle<CR>
