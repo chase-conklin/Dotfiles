@@ -7,21 +7,25 @@ syntax enable
 " ==================
 
 call plug#begin('~/.vim/plugged')
+
+
+" Utilities
 Plug 'sjl/gundo.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'yggdroot/indentLine'
-Plug 'stanangeloff/php.vim'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-signify'
 Plug 'edkolev/tmuxline.vim'
 Plug 'mattn/emmet-vim'
-Plug 'vim-syntastic/syntastic'
+Plug 'mhinz/vim-signify'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+
+" Syntax & Language
 Plug 'lumiliet/vim-twig'
-Plug 'mileszs/ack.vim'
-Plug 'airblade/vim-gitgutter'
+Plug 'stanangeloff/php.vim'
+Plug 'vim-syntastic/syntastic'
 call plug#end()
 
 " =================
@@ -86,16 +90,12 @@ nnoremap <C-l> <C-W><C-L>
 " IndentLine Settings
 let g:indentLine_char='|'
 
-" CtrlP and Ack Settings
-cnoreabbrev Ack Ack!
-nnoremap <leader>a :Ack!<Space>
-if executable ('ag')
-  let g:ctrlp_user_command = 'fd . -t file'
-  let g:ackprg = 'ag --vimgrep'
-endif
-
 "NerdTree Settings
 map <C-n> :NERDTreeToggle<CR>
+
+" Fzf Settings
+nnoremap <leader>f :FZF<CR>
+nnoremap <leader>a :Ag<CR>
 
 " Gundo Settings
 nnoremap <leader>u :GundoToggle<CR>
