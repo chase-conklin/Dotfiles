@@ -35,9 +35,10 @@ call plug#end()
 " =================
 
 " Set tab settings
-set tabstop=2
-set softtabstop=2
 set expandtab
+set shiftwidth=2
+set softtabstop=2
+set smartindent
 set backspace=indent,eol,start
 
 " Set Leader
@@ -112,4 +113,3 @@ let g:gundo_prefer_python3 = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='luna'
 let g:airline#extensions#hunks#enabled=1
-
