@@ -22,6 +22,8 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
 " Syntax & Language
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'lumiliet/vim-twig'
 Plug 'stanangeloff/php.vim'
 Plug 'vim-syntastic/syntastic'
