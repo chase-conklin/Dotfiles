@@ -28,6 +28,9 @@ Plug 'lumiliet/vim-twig'
 Plug 'stanangeloff/php.vim'
 Plug 'vim-syntastic/syntastic'
 
+" Themes
+Plug 'dracula/vim', { 'as': 'dracula' }
+
 call plug#end()
 
 " =================
@@ -113,5 +116,5 @@ let g:gundo_prefer_python3 = 1
 
 "Airline Settings
 let g:airline_powerline_fonts = 1
-let g:airline_theme='luna'
+let g:airline_theme='dracula'
 let g:airline#extensions#hunks#enabled=1
