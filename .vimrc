@@ -118,3 +118,9 @@ let g:gundo_prefer_python3 = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='dracula'
 let g:airline#extensions#hunks#enabled=1
+
+" Syntastic Settings
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
