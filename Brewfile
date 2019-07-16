@@ -7,19 +7,39 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "vitorgalvao/tiny-scripts"
+# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Dependency Manager for PHP
 brew "composer"
+# Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
+# Lightweight DNS forwarder and DHCP server
+brew "dnsmasq", restart_service: true
+# Command-line fuzzy finder written in Go
 brew "fzf"
+# Distributed revision control system
 brew "git"
+# Mac App Store command-line interface
+brew "mas"
+# Open source relational database management system
 brew "mysql"
+# Manage multiple Node.js versions
 brew "nvm"
+# General-purpose scripting language
 brew "php"
+# Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Utility that provides fast incremental file transfer
 brew "rsync"
+# Code-search similar to ack
 brew "the_silver_searcher"
+# Terminal multiplexer
 brew "tmux"
+# Vi 'workalike' with many additional features
 brew "vim"
+# The next-generation plugin manager for zsh
+brew "zplug"
+# Quickly repair outdated/broken Casks from homebrew-cask
 brew "vitorgalvao/tiny-scripts/cask-repair"
 cask "alfred"
 cask "bartender"
@@ -39,3 +59,8 @@ cask "slack"
 cask "spotify"
 cask "sublime-text"
 cask "virtualbox"
+mas "AdGuard for Safari", id: 1440147259
+mas "Magnet", id: 441258766
+mas "PiPer", id: 1421915518
+mas "Silicio", id: 933627574
+mas "Xcode", id: 497799835
