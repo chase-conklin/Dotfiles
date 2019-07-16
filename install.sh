@@ -2,16 +2,18 @@
 
 echo "Welcome to Chase's Computer!"
 
-cd ~
+cd $HOME
 
 # Install Homebrew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # Install homebrew bundle to execute the Brewfile
 brew tap homebrew/bundle
-cp ~/.dotfiles/Brewfile ~
-brew bundle --file="$HOME/Brewfile"
-rm ~/Brewfile
+brew bundle --file=${HOME}/.dotfiles/Brewfile
+
+# Link vimrc and install vim plugins
+ln -s ${HOME}/.dotfiles/.vimrc ${HOME}/.vimrc
+vim +PlugInstall
 
 # Install Oh-My-Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

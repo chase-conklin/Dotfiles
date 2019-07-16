@@ -9,6 +9,8 @@ tap "homebrew/services"
 tap "vitorgalvao/tiny-scripts"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Secure and free password manager for all of your devices
+brew "bitwarden-cli"
 # Dependency Manager for PHP
 brew "composer"
 # Good-lookin' diffs with diff-highlight and more
@@ -41,6 +43,8 @@ brew "vim"
 brew "zplug"
 # Quickly repair outdated/broken Casks from homebrew-cask
 brew "vitorgalvao/tiny-scripts/cask-repair"
+cask "1password"
+cask "1password-cli"
 cask "alfred"
 cask "bartender"
 cask "bitwarden"
@@ -49,6 +53,7 @@ cask "docker"
 cask "figma"
 cask "firefox"
 cask "firefox-developer-edition"
+cask "font-fira-code"
 cask "google-chrome"
 cask "iterm2"
 cask "itsycal"
