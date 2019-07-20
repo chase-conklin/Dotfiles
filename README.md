@@ -14,6 +14,9 @@ brew bundle --file=${CONFIG_DIR}/Brewfile
 ln -s ${CONFIG_DIR}/.vimrc ${HOME}/.vimrc
 vim +PlugInstall
 
+# Set zsh to default
+chsh -s $(which zsh);
+
 # Install Oh-My-Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
