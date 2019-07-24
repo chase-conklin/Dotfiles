@@ -170,3 +170,8 @@ if [ -f "$HOME/"'.platformsh/shell-config.rc' ]; then . "$HOME/"'.platformsh/she
 # -------------
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/sbin:$PATH"
+
+# -------------
+# RVM
+# -------------
+export PATH="$PATH:$HOME/.rvm/bin"
