@@ -40,6 +40,8 @@ else
   echo "Oh-My-Zsh is already installed"
 fi
 
+# Remove default zshrc and set up custom version
+rm ${HOME}/.zshrc
 ln -s ${CONFIG_DIR}/.zshrc.osx ${HOME}/.zshrc
 
 # Install Spacehip Theme
@@ -55,6 +57,9 @@ ln -s "${ZSH_CUSTOM}/themes/spaceship-prompt/spaceship.zsh-theme" "${ZSH_CUSTOM}
 ln -s ${CONFIG_DIR}/.gitconfig ${HOME}/.gitconfig
 ln -s ${CONFIG_DIR}/.gitignore_global ${HOME}/.gitignore_global
 ln -s ${CONFIG_DIR}/.tmux.conf ${HOME}/.tmux.conf
+
+# Set up Karabiner Elements configuration
+ln -s ${CONFIG_DIR}/karabiner ${HOME}/.config
 
 # Install tmuxinator
 if ! type "tmuxinator" > /dev/null; then
