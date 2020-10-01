@@ -2,6 +2,8 @@
 
 The following commands are all contained in the install.sh file to get my system set up in the event a a clean install of macOS. You will need git installed to clone this repository. The easiest way to install git is to install the XCode Command Line Tools.
 
+Executing the script requires the argument of either "work" or "personal" depending on the type of computer that is being set up.
+
 ```
 # Install Homebrew
 if ! type "brew" > /dev/null; then
