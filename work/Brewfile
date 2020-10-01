@@ -12,6 +12,8 @@ tap "vitorgalvao/tiny-scripts"
 brew "bat"
 # Secure and free password manager for all of your devices
 brew "bitwarden-cli"
+# Emacs dependency management
+brew "cask"
 # Dependency Manager for PHP
 brew "composer"
 # Good-lookin' diffs with diff-highlight and more
@@ -52,6 +54,7 @@ brew "khanhas/tap/spicetify-cli"
 brew "vitorgalvao/tiny-scripts/cask-repair"
 cask "1password"
 cask "1password-cli"
+cask "adobe-creative-cloud"
 cask "alfred"
 cask "bartender"
 cask "bitwarden"
