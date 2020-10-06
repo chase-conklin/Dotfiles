@@ -71,8 +71,10 @@ cask "karabiner-elements"
 cask "lando"
 cask "logitech-options"
 cask "macdown"
+cask "microsoft-auto-update"
 cask "microsoft-edge"
 cask "microsoft-office"
+cask "microsoft-teams"
 cask "slack"
 cask "spotify"
 cask "sublime-text"
@@ -80,6 +82,7 @@ cask "virtualbox"
 cask "visual-studio-code"
 cask "webex-meetings"
 cask "wrike"
+cask "zoomus"
 mas "AdGuard for Safari", id: 1440147259
 mas "Magnet", id: 441258766
 mas "PiPer", id: 1421915518
