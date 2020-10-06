@@ -127,6 +127,7 @@ alias ll='ls -1a'
 alias lah='ls -lah'
 alias zshrc="vim -v ~/.zshrc"
 alias vimrc="vim -v ~/.vimrc"
+alias dotfiles="cd ~/.dotfiles"
 alias h='cd ~'
 alias g='git'
 alias gcam='git commit -v -a -m '
