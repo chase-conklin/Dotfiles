@@ -127,6 +127,7 @@ alias ll='ls -1a'
 alias lah='ls -lah'
 alias zshrc="vim -v ~/.zshrc"
 alias vimrc="vim -v ~/.vimrc"
+alias dotfiles="cd ~/.dotfiles"
 alias h='cd ~'
 alias g='git'
 alias gcam='git commit -v -a -m '
@@ -169,8 +170,18 @@ if [ -f "$HOME/"'.platformsh/shell-config.rc' ]; then . "$HOME/"'.platformsh/she
 # -------------
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/sbin:$PATH"
+FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 # -------------
-# RVM
+# Lando sync excluded directories
 # -------------
+alias lsync='docker'
+
+# -------------
+# ZPlug
+# -------------
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"

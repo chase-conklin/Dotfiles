@@ -1,8 +1,13 @@
 #!/bin/sh
 
-echo "Welcome to Chase's Computer!"
+if [ $1 = "work" ] || [ $1 = "personal" ]; then
+  echo "Welcome to Chase's Computer!"
+else
+  echo "That is not a valid directory." 1>&2
+  exit 1
+fi
 
-CONFIG_DIR=${HOME}/.dotfiles
+CONFIG_DIR=${HOME}/.dotfiles/$1
 
 cd $HOME
 
