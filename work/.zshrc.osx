@@ -133,6 +133,7 @@ alias g='git'
 alias gcam='git commit -v -a -m '
 alias glog='git log --oneline'
 alias gs='git status -sb'
+alias gp='git push -u origin HEAD'
 alias gba="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 
 # ------------
