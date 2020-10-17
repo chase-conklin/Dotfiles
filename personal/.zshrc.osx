@@ -133,6 +133,7 @@ alias g='git'
 alias gcam='git commit -v -a -m '
 alias glog='git log --oneline'
 alias gs='git status -sb'
+alias gp='git push -u origin HEAD'
 alias gba="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 
 # ------------
@@ -170,7 +171,7 @@ if [ -f "$HOME/"'.platformsh/shell-config.rc' ]; then . "$HOME/"'.platformsh/she
 # -------------
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/sbin:$PATH"
-FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
 
 # -------------
 # Lando sync excluded directories
