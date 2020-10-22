@@ -12,10 +12,16 @@ tap "vitorgalvao/tiny-scripts"
 brew "bat"
 # Secure and free password manager for all of your devices
 brew "bitwarden-cli"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
 # Emacs dependency management
 brew "cask"
 # Dependency Manager for PHP
 brew "composer"
+# Open source suite of directory software
+brew "openldap"
+# Get a file from an HTTP, HTTPS or FTP server
+brew "curl-openssl"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
 # Lightweight DNS forwarder and DHCP server
@@ -26,6 +32,10 @@ brew "fzf"
 brew "gcc"
 # Distributed revision control system
 brew "git"
+# Postgres C API library
+brew "libpq"
+# GUI for vim, made for macOS
+brew "macvim"
 # Mac App Store command-line interface
 brew "mas"
 # Open source relational database management system
@@ -38,14 +48,14 @@ brew "php"
 brew "ripgrep"
 # Utility that provides fast incremental file transfer
 brew "rsync"
+# Tool to create intelligent and beautiful documentation
+brew "sphinx-doc"
 # Code-search similar to ack
 brew "the_silver_searcher"
 # Terminal multiplexer
 brew "tmux"
 # Manage complex tmux sessions easily
 brew "tmuxinator"
-# Vi 'workalike' with many additional features
-brew "vim"
 # Next-generation plugin manager for zsh
 brew "zplug"
 # Command-line tool to customize Spotify client
@@ -83,8 +93,5 @@ cask "visual-studio-code"
 cask "webex-meetings"
 cask "wrike"
 cask "zoomus"
-mas "AdGuard for Safari", id: 1440147259
-mas "Magnet", id: 441258766
-mas "PiPer", id: 1421915518
 mas "Silicio", id: 933627574
 mas "Xcode", id: 497799835

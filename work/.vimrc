@@ -15,25 +15,35 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-" Utilities
-Plug 'sjl/gundo.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'yggdroot/indentLine'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Syntax & Language
 Plug 'tpope/vim-fugitive'
-Plug 'edkolev/tmuxline.vim'
+Plug 'vim-syntastic/syntastic'
+Plug 'pangloss/vim-javascript'
+Plug 'stanangeloff/php.vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'lumiliet/vim-twig'
+
+" Completion
 Plug 'mattn/emmet-vim'
-Plug 'mhinz/vim-signify'
+Plug 'raimondi/delimitmate'
+
+" Code Display
+Plug 'yggdroot/indentLine'
+Plug 'sjl/gundo.vim'
+
+" Integrations
+Plug 'scrooloose/nerdtree'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'edkolev/tmuxline.vim'
 
-" Syntax & Language
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'lumiliet/vim-twig'
-Plug 'stanangeloff/php.vim'
-Plug 'vim-syntastic/syntastic'
+" Interface
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'mhinz/vim-signify'
+
+" Commands
+Plug 'tpope/vim-commentary'
 
 " Themes
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -68,6 +78,9 @@ set showcmd
 set wildmenu
 set showmatch
 set noshowmode
+
+nnoremap <leader>q :q!<CR>
+nnoremap <leader>w :w!<CR>
 
 " Searching
 set incsearch
@@ -106,6 +119,9 @@ let g:indentLine_char='|'
 "NerdTree Settings
 map <C-n> :NERDTreeToggle<CR>
 
+" Commentary Settings
+map <leader>c gcc
+
 " Fzf Settings
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>a :Ag<CR>
@@ -124,6 +140,7 @@ highlight SignColumn ctermbg=NONE cterm=NONE guibg=NONE gui=NONE
 highlight SignifySignAdd cterm=bold ctermbg=none ctermfg=10
 highlight SignifySignDelete cterm=bold ctermbg=none  ctermfg=9
 highlight SignifySignChange cterm=bold ctermbg=none ctermfg=11
+set updatetime=100
 
 " Gundo Settings
 nnoremap <leader>u :GundoToggle<CR>
