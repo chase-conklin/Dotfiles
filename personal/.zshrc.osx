@@ -1,3 +1,4 @@
+ZSH_DISABLE_COMPFIX=true
 # -----------
 # General oh-my-zsh settings
 # -----------
