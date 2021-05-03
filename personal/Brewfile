@@ -21,6 +21,8 @@ brew "git"
 brew "pkg-config"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
+# Move files and folders to the trash
+brew "macos-trash"
 # GUI for vim, made for macOS
 brew "macvim"
 # Mac App Store command-line interface
