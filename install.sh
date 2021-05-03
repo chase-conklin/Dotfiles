@@ -7,7 +7,12 @@ else
   exit 1
 fi
 
-CONFIG_DIR=${HOME}/.dotfiles/$1
+if [ ! -d ${HOME}/.dot]; then
+  CONFIG_DIR=${HOME}/.dot/$1
+else
+  echo "The .dot directory does not exist. Please clone the dotfiles repo into ~/.dot."
+  exit 1
+fi
 
 cd $HOME
 
@@ -20,7 +25,7 @@ fi
 
 # Install homebrew bundle to execute the Brewfile
 brew tap homebrew/bundle
-if ! brew bundle check --file=~/.dotfiles/Brewfile --no-upgrade ; then
+if ! brew bundle check --file=${CONFIG_DIR}/Brewfile --no-upgrade ; then
   brew bundle --file=${CONFIG_DIR}/Brewfile
 else
   echo "Homebrew depencies are installed"
@@ -29,7 +34,7 @@ fi
 # Link vimrc and install vim plugins
 rm ${HOME}/.vimrc
 ln -s ${CONFIG_DIR}/.vimrc ${HOME}/.vimrc
-vim -c ":PlutInstall | :qa"
+vim -c ":PlugInstall | :qa"
 
 # Set zsh to default
 if [ "$SHELL" != /bin/zsh ]
@@ -64,7 +69,14 @@ ln -s ${CONFIG_DIR}/.gitconfig ${HOME}/.gitconfig
 ln -s ${CONFIG_DIR}/.gitignore_global ${HOME}/.gitignore_global
 ln -s ${CONFIG_DIR}/.tmux.conf ${HOME}/.tmux.conf
 
+# Set up tmuxinator.zsh
+mkdir ${HOME}/.bin
+ln -s ${CONFIG_DIR}/tmuxinator.zsh ${HOME}/.bin/tmuxinator.zsh
+
 # Set up Karabiner Elements configuration
-ln -s ${CONFIG_DIR}/karabiner ${HOME}/.config
+mkdir ${HOME}/.config
+cd ${HOME}/.config
+ln -s ${CONFIG_DIR}/karabiner
+cd ${HOME}
 
 echo "Setup complete for Chase's Computer!"

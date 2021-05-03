@@ -128,7 +128,8 @@ alias ll='ls -1a'
 alias lah='ls -lah'
 alias zshrc="vim -v ~/.zshrc"
 alias vimrc="vim -v ~/.vimrc"
-alias dotfiles="cd ~/.dotfiles"
+alias vim="mvim -v"
+alias dot="cd ~/.dot"
 alias h='cd ~'
 alias g='git'
 alias gcam='git commit -v -a -m '
@@ -136,6 +137,16 @@ alias glog='git log --oneline'
 alias gs='git status -sb'
 alias gp='git push -u origin HEAD'
 alias gba="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
+
+# ------------
+# Homebrew
+# ------------
+alias bdump='brew bundle dump --describe --force --file=~/.dot/personal/Brewfile'
+alias bform='brew ls --formulae'
+alias bcask='brew ls --cask'
+alias bupbrew='brew update'
+alias bupform='brew upgrade --formulae'
+alias bupcask='brew uprade --cask'
 
 # ------------
 # Tmux
