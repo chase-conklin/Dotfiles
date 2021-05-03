@@ -8,32 +8,32 @@ tap "homebrew/core"
 tap "homebrew/services"
 tap "khanhas/tap"
 tap "vitorgalvao/tiny-scripts"
+# Automatic configure script builder
+brew "autoconf"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Secure and free password manager for all of your devices
 brew "bitwarden-cli"
-# Validating, recursive, caching DNS resolver
-brew "unbound"
-# Emacs dependency management
-brew "cask"
 # Dependency Manager for PHP
 brew "composer"
-# Open source suite of directory software
-brew "openldap"
 # Get a file from an HTTP, HTTPS or FTP server
-brew "curl-openssl"
+brew "curl"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
-# Lightweight DNS forwarder and DHCP server
-brew "dnsmasq", restart_service: true
+# ODBC 3 connectivity for UNIX
+brew "unixodbc"
+# Libraries to talk to Microsoft SQL Server and Sybase databases
+brew "freetds"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# GNU compiler collection
-brew "gcc"
 # Distributed revision control system
 brew "git"
 # Postgres C API library
 brew "libpq"
+# Move files and folders to the trash
+brew "macos-trash"
+# Powerful, clean, object-oriented scripting language
+brew "ruby"
 # GUI for vim, made for macOS
 brew "macvim"
 # Mac App Store command-line interface
@@ -48,8 +48,6 @@ brew "php"
 brew "ripgrep"
 # Utility that provides fast incremental file transfer
 brew "rsync"
-# Tool to create intelligent and beautiful documentation
-brew "sphinx-doc"
 # Code-search similar to ack
 brew "the_silver_searcher"
 # Terminal multiplexer
@@ -58,40 +56,55 @@ brew "tmux"
 brew "tmuxinator"
 # Next-generation plugin manager for zsh
 brew "zplug"
-# Command-line tool to customize Spotify client
-brew "khanhas/tap/spicetify-cli"
-# Quickly repair outdated/broken Casks from homebrew-cask
-brew "vitorgalvao/tiny-scripts/cask-repair"
+# Password manager that keeps all passwords secure behind one password
 cask "1password"
+# Command-line helper for the 1Password password manager
 cask "1password-cli"
+# Collection of apps and services for photography, design, video, web, and UX
 cask "adobe-creative-cloud"
+# Application launcher and productivity software
 cask "alfred"
-cask "bartender"
+# Desktop password and login vault
 cask "bitwarden"
+# Web browser focusing on privacy
 cask "brave-browser"
+# App to build and share containerized applications and microservices
 cask "docker"
+# Collaborative team software
 cask "figma"
+# Web browser
 cask "firefox"
+# Web browser
 cask "firefox-developer-edition"
 cask "font-fira-code"
+# Web browser
 cask "google-chrome"
+# Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
-cask "itsycal"
+# Keyboard customizer
 cask "karabiner-elements"
 cask "lando"
+# Software for Logitech devices
 cask "logitech-options"
+# Open-source Markdown editor
 cask "macdown"
+# Provides updates to various Microsoft products
 cask "microsoft-auto-update"
+# Multi-platform web browser
 cask "microsoft-edge"
 cask "microsoft-office"
 cask "microsoft-teams"
+# Team communication and collaboration software
 cask "slack"
+# Music streaming service
 cask "spotify"
+# Text editor for code, markup and prose
 cask "sublime-text"
-cask "virtualbox"
+# Open-source code editor
 cask "visual-studio-code"
 cask "webex-meetings"
 cask "wrike"
-cask "zoomus"
-mas "Silicio", id: 933627574
-mas "Xcode", id: 497799835
+# Video communication and virtual meeting platform
+cask "zoom"
+mas "1Blocker", id: 1365531024
+mas "Magnet", id: 441258766
