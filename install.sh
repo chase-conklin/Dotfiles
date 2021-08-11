@@ -55,6 +55,13 @@ fi
 rm ${HOME}/.zshrc
 ln -s ${CONFIG_DIR}/.zshrc.osx ${HOME}/.zshrc
 
+# Install Zsh-Z
+if [ ! -d "${HOME}/.oh-my-zsh/custom/plugins/zsh-z" ]; then
+  git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
+else
+  echo "Zsh-Z is already installed"
+fi
+
 # Install Spacehip Theme
 if [ ! -d "${HOME}/.oh-my-zsh/custom/themes/spaceship-prompt" ]; then
   git clone https://github.com/denysdovhan/spaceship-prompt.git "${ZSH_CUSTOM}/themes/spaceship-prompt"

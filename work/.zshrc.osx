@@ -71,7 +71,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  plugins=(git osx sudo npm jsontools)
+  plugins=(git osx sudo npm jsontools zsh-z)
 else
   plugins=(git jsontools)
 fi
@@ -200,6 +200,11 @@ alias lsync='docker'
 # -------------
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
+
+# -------------
+# Trash
+# -------------
+alias rm='trash'
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
