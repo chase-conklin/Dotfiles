@@ -94,6 +94,14 @@ _has() {
 
 # User configuration
 
+# Create a cache folder if it isn't exists
+if [ ! -d "$HOME/.cache/zsh" ]; then
+    mkdir -p $HOME/.cache/zsh
+fi
+
+# Define a custom file for compdump
+export ZSH_COMPDUMP="$HOME/.cache/zsh/zcompdump-$HOST-$ZSH_VERSION"
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -153,6 +161,14 @@ if [ -f "$BIN_DIR/tmuxinator.zsh" ]; then
 else
   echo >&2 "NOTICE: ${BIN_DIR}/tmuxinator.zsh is missing"
 fi
+
+# -------------
+# Homebrew
+# -------------
+alias bbdwork='brew bundle dump --force --describe --file=~/.dotfiles/work/Brewfile'
+alias bbdpersonal='brew bundle dump --force --describe --file=~/.dotfiles/personal/Brewfile'
+source ~/.config/homebrew/homebrew-api.txt
+export HOMEBREW_GITHUB_API_TOKEN
 
 # -------------
 # NVM

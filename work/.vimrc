@@ -66,6 +66,10 @@ set backspace=indent,eol,start
 " Set Leader
 let mapleader=","
 
+" Drupal Development Settings
+autocmd BufRead,BufNewFile *.theme,*.module,*.install,*.test,*.inc,*.view
+  \ set filetype=php
+
 " =================
 "
 " UI Config
