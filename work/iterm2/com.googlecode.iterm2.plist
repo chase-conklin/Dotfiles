@@ -48712,7 +48712,7 @@
 	<key>OpenArrangementAtStartup</key>
 	<false/>
 	<key>OpenNoWindowsAtStartup</key>
-	<true/>
+	<false/>
 	<key>OpenTmuxWindowsIn</key>
 	<integer>2</integer>
 	<key>PMPrintingExpandedStateForPrint2</key>

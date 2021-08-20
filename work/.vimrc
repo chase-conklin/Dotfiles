@@ -69,6 +69,8 @@ let mapleader=","
 " Drupal Development Settings
 autocmd BufRead,BufNewFile *.theme,*.module,*.install,*.test,*.inc,*.view
   \ set filetype=php
+autocmd BufRead,BufNewFile *.html.twig
+  \ set filetype=twig
 
 " =================
 "
