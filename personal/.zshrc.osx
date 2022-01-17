@@ -72,7 +72,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  plugins=(git osx sudo npm jsontools)
+  plugins=(git macos sudo npm jsontools)
 else
   plugins=(git jsontools)
 fi
@@ -101,7 +101,7 @@ _has() {
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -126,9 +126,9 @@ alias l='ls'
 alias la='ls -a'
 alias ll='ls -1a'
 alias lah='ls -lah'
-alias zshrc="mvim -v ~/.zshrc"
-alias vimrc="mvim -v ~/.vimrc"
-alias vim="mvim -v"
+alias zshrc="nvim ~/.zshrc"
+alias vimrc="nvim ~/.vimrc"
+alias vim="nvim"
 alias dot="cd ~/.dot"
 alias rm="trash"
 alias h='cd ~'
