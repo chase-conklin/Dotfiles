@@ -142,7 +142,9 @@ alias gba="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %
 # ------------
 # Homebrew
 # ------------
-alias bdump='brew bundle dump --describe --force --file=~/.dot/personal/Brewfile'
+alias bbinstall='brew bundle --global'
+alias bbdump='brew bundle dump --describe --force --global'
+alias bblist='brew bundle list --global --all'
 alias bform='brew ls --formulae'
 alias bcask='brew ls --cask'
 alias bupbrew='brew update'
