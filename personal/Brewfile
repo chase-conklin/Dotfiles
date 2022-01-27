@@ -37,6 +37,8 @@ brew "ripgrep"
 brew "rsync"
 # Command-line interface for https://speedtest.net bandwidth tests
 brew "speedtest-cli"
+# Cross-shell prompt for astronauts
+brew "starship"
 # Code-search similar to ack
 brew "the_silver_searcher"
 # Terminal multiplexer
