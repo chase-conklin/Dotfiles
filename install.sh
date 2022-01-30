@@ -1,14 +1,17 @@
 #!/bin/zsh
 
-if [ $1 = "work" ] || [ $1 = "home" ]; then
+echo "Is this a home computer or work computer? (Enter 'home' or 'work')"
+read comptype
+
+if [ $comptype = "work" ] || [ $comptype = "home" ]; then
   echo "Welcome to Chase's Computer!"
 else
-  echo "That is not a valid directory." 1>&2
+  echo "That is not a valid type of computer." 1>&2
   exit 1
 fi
 
 if [ -d ${HOME}/.dotfiles ]; then
-  CONFIG_DIR=${HOME}/.dotfiles/$1
+  CONFIG_DIR=${HOME}/.dotfiles/$comptype
 else
   echo "The .dotfiles directory does not exist. Please clone the dotfiles repo into ~/.dotfiles."
   exit 1
@@ -93,7 +96,7 @@ else
   echo "Neovim has already been set up"
 fi
 
-# Set up dotfiles
+# Set up other dotfiles
 echo "Setting up other dotfiles..."
 if [ ! -L ${HOME}/.gitconfig ]; then
   ln -s ${CONFIG_DIR}/.gitconfig ${HOME}/.gitconfig

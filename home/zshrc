@@ -78,10 +78,10 @@ alias ls='ls --color=auto'
 alias la='ls -a --color=auto'
 alias ll='ls -1a --color=auto'
 alias lah='ls -lah --color=auto'
-alias zshrc="nvim ~/.zshrc"
-alias vimrc="nvim ~/.vimrc"
+alias dotconfig="cd ~/.dotfiles"
+alias zshconfig="nvim ~/.zshrc"
+alias vimconfig="nvim ~/.vimrc"
 alias vim="nvim"
-alias dotfiles="cd ~/.dot"
 alias h='cd ~'
 
 # ------------
@@ -130,13 +130,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 
 # -------------
-# Platform.sh CLI configuration
-# -------------
-HOME=${HOME:-'/Users/chase.conklin'}
-export PATH="$HOME/"'.platformsh/bin':"$PATH"
-if [ -f "$HOME/"'.platformsh/shell-config.rc' ]; then . "$HOME/"'.platformsh/shell-config.rc'; fi # END SNIPPET
-
-# -------------
 # Fzf
 # -------------
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -154,7 +147,14 @@ alias lsync='docker'
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+# -------------
+# RVM
+#
+# Make sure this is the last PATH variable change.
+# -------------
 export PATH="$PATH:$HOME/.rvm/bin"
 
+# -------------
+# Starship Prompt
+# -------------
 eval "$(starship init zsh)"
