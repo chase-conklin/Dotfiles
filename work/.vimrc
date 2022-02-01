@@ -136,7 +136,7 @@ nnoremap <leader>r :Rg<CR>
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 " Add custom Rg and Files commands
 command! -bang -nargs=* Rg
-    \ call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!bower_components/*" --glob "!vendor/*" --color "always" '.shellescape(<q-args>), 1, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+    \ call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!bower_components/*" --glob "!dist/*" --glob "!vendor/*" --color "always" '.shellescape(<q-args>), 1, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 

@@ -71,7 +71,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  plugins=(git osx sudo npm jsontools zsh-z)
+  plugins=(git macos sudo npm jsontools zsh-z)
 else
   plugins=(git jsontools)
 fi
@@ -206,5 +206,5 @@ source $ZPLUG_HOME/init.zsh
 # -------------
 alias rm='trash'
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# Add homebrew version of ruby to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="/usr/local/opt/ruby/bin:$PATH"
