@@ -7,6 +7,8 @@ tap "homebrew/core"
 tap "homebrew/services"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Platform built on V8 to build network applications
+brew "node"
 # Secure and free password manager for all of your devices
 brew "bitwarden-cli"
 # GNU File, Shell, and Text utilities
@@ -19,24 +21,32 @@ brew "fzf"
 brew "git"
 # Manage compile and link flags for libraries
 brew "pkg-config"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Move files and folders to the trash
 brew "macos-trash"
-# GUI for vim, made for macOS
-brew "macvim"
 # Mac App Store command-line interface
 brew "mas"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Utility that provides fast incremental file transfer
 brew "rsync"
+# Command-line interface for https://speedtest.net bandwidth tests
+brew "speedtest-cli"
+# Cross-shell prompt for astronauts
+brew "starship"
 # Code-search similar to ack
 brew "the_silver_searcher"
 # Terminal multiplexer
 brew "tmux"
 # Manage complex tmux sessions easily
 brew "tmuxinator"
+# Pluggable terminal workspace, with terminal multiplexer as the base feature
+brew "zellij"
 # General-purpose lossless data-compression library
 brew "zlib"
 # Next-generation plugin manager for zsh
@@ -65,7 +75,7 @@ cask "epic-games"
 cask "figma"
 # Web browser
 cask "firefox-developer-edition"
-cask "font-fira-code"
+cask "font-fira-code-nerd-font"
 # Game client
 cask "gog-galaxy"
 # Web browser
@@ -76,6 +86,7 @@ cask "istat-menus"
 cask "iterm2"
 # Keyboard customizer
 cask "karabiner-elements"
+# Local development environment and DevOps tool built on Docker
 cask "lando"
 # Software for Logitech devices
 cask "logitech-options"
@@ -83,7 +94,12 @@ cask "logitech-options"
 cask "macdown"
 # Provides updates to various Microsoft products
 cask "microsoft-auto-update"
+# Office suite
 cask "microsoft-office"
+# Bridges ProtonMail to email clients supporting IMAP and SMTP protocols
+cask "protonmail-bridge"
+# Monitors the computer system and optimizes its performance
+cask "sensei"
 # Team communication and collaboration software
 cask "slack"
 # Application to control your PlayStation 4
@@ -94,8 +110,23 @@ cask "spotify"
 cask "steam"
 # Text editor for code, markup and prose
 cask "sublime-text"
+# Set up, configure, manage and analyze your UniFi network
 cask "ubiquiti-unifi-controller"
+# Desktop storage area for notes, files and pasteboard clips
+cask "unclutter"
+# Install and switch between multiple versions of Xcode
+cask "xcodes"
 mas "1Blocker", id: 1365531024
+mas "Aviary", id: 1522043420
+mas "Deliveries", id: 290986013
 mas "GameTrack", id: 1136800740
+mas "GarageBand", id: 682658836
+mas "Grocery", id: 1195676848
 mas "HomePass", id: 1330266650
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
 mas "Magnet", id: 441258766
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Pixelmator Pro", id: 1289583905
+mas "TestFlight", id: 899247664

@@ -1,0 +1,160 @@
+# ------------
+#
+# ZSH Settings
+#
+# ------------
+
+# Enable switching directories without using the cd command
+setopt auto_cd
+
+# ------------
+# Completion
+#
+# Setting the the style and options for zsh completion
+# Commands taken from https://thevaluable.dev/zsh-completion-guide-examples/
+# ------------
+
+# Initialize zsh completion
+autoload -U compinit; compinit -u
+
+# Set the styles for zsh completion including case insensitivity and grouping of options
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
+zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
+zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+zstyle ':completion:*' group-name ''
+
+setopt ALWAYS_TO_END
+setopt MENU_COMPLETE
+setopt AUTO_LIST
+setopt COMPLETE_IN_WORD
+
+# ------------
+# Internal Utility Functions
+#
+# Functions for use in setting some variables and aliases
+# Pulled from https://github.com/statico/dotfiles/blob/main/.zshrc
+# ------------
+
+# Returns whether the given command is executable or aliased.
+_has() {
+  return $( whence $1 >/dev/null )
+}
+
+# Returns the version of a command if present, or n/a if unavailable.
+_versionof() {
+  if _has "$1"; then
+    echo "$1 $($1 --version)"
+  else
+    echo "$1 n/a"
+  fi
+}
+
+# ------------
+# Environment Variables
+# ------------
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+export EDITOR='nvim'
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# ------------
+#
+# Aliases
+#
+# ------------
+
+alias ls='ls --color=auto'
+alias la='ls -a --color=auto'
+alias ll='ls -1a --color=auto'
+alias lah='ls -lah --color=auto'
+alias dotconfig="cd ~/.dotfiles"
+alias zshconfig="nvim ~/.zshrc"
+alias vimconfig="nvim ~/.vimrc"
+alias vim="nvim"
+alias h='cd ~'
+
+# ------------
+# Git
+# ------------
+alias g='git'
+alias gcam='git commit -v -a -m '
+alias glog='git log --oneline'
+alias gs='git status -sb'
+alias gp='git push -u origin HEAD'
+alias gba="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
+
+# ------------
+# Homebrew
+# ------------
+alias bbinstall='brew bundle --global'
+alias bbdump='brew bundle dump --describe --force --global'
+alias bblist='brew bundle list --global --all'
+alias bform='brew ls --formulae'
+alias bcask='brew ls --cask'
+alias bupbrew='brew update'
+alias bupform='brew upgrade --formulae'
+alias bupcask='brew uprade --cask'
+
+# ------------
+# Tmux
+# ------------
+alias ta='tmux attach -t '
+alias tl='tmux list-sessions'
+alias tn='tmux new -s '
+alias ts='tmux switch -t '
+alias tk='mux stop '
+
+# Load tmuxinator alias file
+BIN_DIR="${HOME}/.bin"
+if [ -f "$BIN_DIR/tmuxinator.zsh" ]; then
+  source ${BIN_DIR}/tmuxinator.zsh
+else
+  echo >&2 "NOTICE: ${BIN_DIR}/tmuxinator.zsh is missing"
+fi
+
+# -------------
+# NVM
+# -------------
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+
+# -------------
+# Fzf
+# -------------
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/usr/local/sbin:$PATH"
+export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
+
+# -------------
+# Lando sync excluded directories
+# -------------
+alias lsync='docker'
+
+# -------------
+# ZPlug
+# -------------
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+# -------------
+# RVM
+#
+# Make sure this is the last PATH variable change.
+# -------------
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# -------------
+# Starship Prompt
+# -------------
+eval "$(starship init zsh)"

@@ -1,89 +1,140 @@
-#!/bin/sh
+#!/bin/zsh
 
-if [ $1 = "work" ] || [ $1 = "personal" ]; then
+echo "Is this a home computer or work computer? (Enter 'home' or 'work')"
+read comptype
+
+if [ $comptype = "work" ] || [ $comptype = "home" ]; then
   echo "Welcome to Chase's Computer!"
 else
-  echo "That is not a valid directory." 1>&2
+  echo "That is not a valid type of computer." 1>&2
   exit 1
 fi
 
-if [ ! -d ${HOME}/.dot]; then
-  CONFIG_DIR=${HOME}/.dot/$1
+if [ -d ${HOME}/.dotfiles ]; then
+  CONFIG_DIR=${HOME}/.dotfiles/$comptype
 else
-  echo "The .dot directory does not exist. Please clone the dotfiles repo into ~/.dot."
+  echo "The .dotfiles directory does not exist. Please clone the dotfiles repo into ~/.dotfiles."
   exit 1
 fi
 
 cd $HOME
 
+# Check if zsh is the active shell
+if [ "$SHELL" != /bin/zsh ]; then
+  echo "Please set zsh as the default shell before you continue."
+  exit 1
+fi
+
+# Remove default zshrc and set up custom version
+echo "Setting up .zshrc..."
+if [ ! -L ${HOME}/.zshrc ]; then
+  rm ${HOME}/.zshrc
+  ln -s ${CONFIG_DIR}/zshrc ${HOME}/.zshrc
+  source ${HOME}/.zshrc
+  echo ".zshrc has been symlinked"
+else
+  echo ".zshrc has already been symlinked"
+fi
+
 # Install Homebrew
+echo "Installing Homebrew..."
 if ! type "brew" > /dev/null; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  brew tap homebrew/bundle
+  echo "Homebrew has been installed"
 else
   echo "Homebrew is already installed"
 fi
 
+# Set up Brewfile
+echo "Setting up .Brewfile..."
+if [ ! -L ${HOME}/.Brewfile ]; then
+  ln -s $CONFIG_DIR}/Brewfile ${HOME}/.Brewfile
+  echo ".Brewfile has been symlinked"
+else
+  echo ".Brewfile has already been symlinked"
+fi
+
 # Install homebrew bundle to execute the Brewfile
-brew tap homebrew/bundle
-if ! brew bundle check --file=${CONFIG_DIR}/Brewfile --no-upgrade ; then
-  brew bundle --file=${CONFIG_DIR}/Brewfile
+echo "Installing Homebrew dependencies..."
+if ! brew bundle check -g --no-upgrade ; then
+  brew bundle -g
 else
   echo "Homebrew depencies are installed"
 fi
 
-# Link vimrc and install vim plugins
-rm ${HOME}/.vimrc
-ln -s ${CONFIG_DIR}/.vimrc ${HOME}/.vimrc
-vim -c ":PlugInstall | :qa"
-
-# Set zsh to default
-if [ "$SHELL" != /bin/zsh ]
-then
-  chsh -s $(which zsh);
+# Link vimrc
+echo "Setting up .vimrc..."
+if [ ! -L ${HOME}/.vimrc ]; then
+  rm ${HOME}/.vimrc
+  ln -s ${CONFIG_DIR}/vimrc ${HOME}/.vimrc
+  echo ".vimrc has been symlinked to the home directory"
 else
-  echo "Zsh is already the default shell"
+  echo ".vimrc has already been symlinked"
 fi
 
-# Install Oh-My-Zsh
-if [ ! -d "${HOME}/.oh-my-zsh" ]; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-else
-  echo "Oh-My-Zsh is already installed"
+# Create .config directory if it doesn't exist
+if [ ! -d {$HOME}/.config ]; then
+  mkdir ${HOME}/.config
 fi
 
-# Remove default zshrc and set up custom version
-rm ${HOME}/.zshrc
-ln -s ${CONFIG_DIR}/.zshrc.osx ${HOME}/.zshrc
-
-# Install Zsh-Z
-if [ ! -d "${HOME}/.oh-my-zsh/custom/plugins/zsh-z" ]; then
-  git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
+# Link starship.toml
+echo "Setting up starship.toml..."
+if [ ! -L ${HOME}/.config/starship.toml ]; then
+  ln -s ${CONFIG_DIR}/starship.toml ${HOME}/.config/starship.toml
+  echo "starship.toml has been symlinked to the .config directory"
 else
-  echo "Zsh-Z is already installed"
+  echo "starship.toml has already been symlinked"
 fi
 
-# Install Spacehip Theme
-if [ ! -d "${HOME}/.oh-my-zsh/custom/themes/spaceship-prompt" ]; then
-  git clone https://github.com/denysdovhan/spaceship-prompt.git "${ZSH_CUSTOM}/themes/spaceship-prompt"
+# Set up Neovim
+echo "Setting up Neovim..."
+if [ ! [ -L {$HOME}/.config/nvim && -d {$HOME}/.config/nvim ] ]; then
+  ln -s ${CONFIG_DIR}/nvim ${HOME}/.config
+  nvim -c ":PlugInstall | :qa!"
 else
-  echo "Spaceship theme is already installed"
+  echo "Neovim has already been set up"
 fi
 
-ln -s "${ZSH_CUSTOM}/themes/spaceship-prompt/spaceship.zsh-theme" "${ZSH_CUSTOM}/themes/spaceship.zsh-theme"
+# Set up other dotfiles
+echo "Setting up other dotfiles..."
+if [ ! -L ${HOME}/.gitconfig ]; then
+  ln -s ${CONFIG_DIR}/.gitconfig ${HOME}/.gitconfig
+  echo ".gitconfig has been symlinked"
+else
+  echo ".gitconfig has already been symlinked"
+fi
 
-# Set up dotfiles
-ln -s ${CONFIG_DIR}/.gitconfig ${HOME}/.gitconfig
-ln -s ${CONFIG_DIR}/.gitignore_global ${HOME}/.gitignore_global
-ln -s ${CONFIG_DIR}/.tmux.conf ${HOME}/.tmux.conf
+if [ ! -L ${HOME}/.gitignore_global ]; then
+  ln -s ${CONFIG_DIR}/.gitignore_global ${HOME}/.gitignore_global
+  echo ".gitignore_global has been symlinked"
+else
+  echo ".gitignore_global has already been symlinked"
+fi
+
+if [ ! -L ${HOME}/.tmux.conf ]; then
+  ln -s ${CONFIG_DIR}/.tmux.conf ${HOME}/.tmux.conf
+  echo ".tmux.conf has been symlinked"
+else
+  echo ".tmux.conf has already been symlinked"
+fi
 
 # Set up tmuxinator.zsh
-mkdir ${HOME}/.bin
-ln -s ${CONFIG_DIR}/tmuxinator.zsh ${HOME}/.bin/tmuxinator.zsh
+if [ ! -d {$HOME}/.bin ]; then
+  mkdir ${HOME}/.bin
+fi
+
+if [ ! -L ${HOME}/.bin/.tmuxinator.zsh ]; then
+  ln -s ${CONFIG_DIR}/tmuxinator.zsh ${HOME}/.bin/tmuxinator.zsh
+else
+  echo "Tmuxinator.zsh files is already installed"
+fi
 
 # Set up Karabiner Elements configuration
-mkdir ${HOME}/.config
-cd ${HOME}/.config
-ln -s ${CONFIG_DIR}/karabiner
-cd ${HOME}
+if [ ! [ -L {$HOME}/.config/karabiner && -d {$HOME}/.config ] ]; then
+ ln -s ${CONFIG_DIR}/karabiner ${HOME}/.config
+else
+  echo "Karabiner configuration has already been symlinked"
+fi
 
 echo "Setup complete for Chase's Computer!"
