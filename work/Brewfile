@@ -14,14 +14,16 @@ brew "autoconf"
 brew "bat"
 # Secure and free password manager for all of your devices
 brew "bitwarden-cli"
-# Dependency Manager for PHP
-brew "composer"
-# Good-lookin' diffs with diff-highlight and more
-brew "diff-so-fancy"
 # ODBC 3 connectivity for UNIX
 brew "unixodbc"
 # Libraries to talk to Microsoft SQL Server and Sybase databases
 brew "freetds"
+# General-purpose scripting language
+brew "php", link: false
+# Dependency Manager for PHP
+brew "composer"
+# Good-lookin' diffs with diff-highlight and more
+brew "diff-so-fancy"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Distributed revision control system
@@ -40,10 +42,12 @@ brew "macvim"
 brew "mas"
 # Open source relational database management system
 brew "mysql", restart_service: true
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
 # Manage multiple Node.js versions
 brew "nvm"
-# General-purpose scripting language
-brew "php", restart_service: true
+# Ruby version manager
+brew "rbenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Utility that provides fast incremental file transfer
@@ -76,7 +80,7 @@ cask "figma"
 cask "firefox"
 # Web browser
 cask "firefox-developer-edition"
-cask "font-fira-code"
+cask "font-fira-code-nerd-font"
 # Web browser
 cask "google-chrome"
 # Terminal emulator as alternative to Apple's Terminal app
@@ -105,10 +109,14 @@ cask "spotify"
 cask "sublime-text"
 # Open-source code editor
 cask "visual-studio-code"
+# Video communication and virtual meeting platform
 cask "webex-meetings"
 # Project management app
 cask "wrike"
+# Install and switch between multiple versions of Xcode
+cask "xcodes"
 # Video communication and virtual meeting platform
 cask "zoom"
 mas "1Blocker", id: 1365531024
 mas "Magnet", id: 441258766
+mas "Xcode", id: 497799835
