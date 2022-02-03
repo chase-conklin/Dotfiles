@@ -47,10 +47,10 @@ brew "tmux"
 brew "tmuxinator"
 # Pluggable terminal workspace, with terminal multiplexer as the base feature
 brew "zellij"
+# Flexible and fast Zsh plugin manager
+brew "zinit"
 # General-purpose lossless data-compression library
 brew "zlib"
-# Next-generation plugin manager for zsh
-brew "zplug"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Command-line helper for the 1Password password manager
