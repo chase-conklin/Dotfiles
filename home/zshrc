@@ -7,6 +7,10 @@
 # Enable switching directories without using the cd command
 setopt auto_cd
 
+# Use vi mode
+bindkey -v
+export KEYTIMEOUT=1
+
 # ------------
 # Completion
 #
@@ -28,6 +32,25 @@ setopt ALWAYS_TO_END
 setopt MENU_COMPLETE
 setopt AUTO_LIST
 setopt COMPLETE_IN_WORD
+
+# ------------
+# History
+#
+# Remove any duplicates in history while searching
+# Configuration is from https://ianyepan.github.io/posts/moving-away-from-ohmyzsh
+# ------------
+
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=5000
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt incappendhistory
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 
 # ------------
 # Internal Utility Functions
@@ -137,15 +160,17 @@ export PATH="/usr/local/sbin:$PATH"
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
 
 # -------------
-# Lando sync excluded directories
+# Zinit
+#
+# A Zsh plugin manager in active development
+# Documentation: https://github.com/zdharma-continuum/zinit
 # -------------
-alias lsync='docker'
+source /usr/local/opt/zinit/zinit.zsh
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-# -------------
-# ZPlug
-# -------------
-export ZPLUG_HOME=/usr/local/opt/zplug
-source $ZPLUG_HOME/init.zsh
+zinit light "zsh-users/zsh-autosuggestions"
+zinit light "zsh-users/zsh-syntax-highlighting"
 
 # -------------
 # RVM
