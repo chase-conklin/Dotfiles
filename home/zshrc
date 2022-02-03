@@ -173,6 +173,14 @@ zinit light "zsh-users/zsh-autosuggestions"
 zinit light "zsh-users/zsh-syntax-highlighting"
 
 # -------------
+# zsh-autosuggestions
+# -------------
+
+bindkey '^l' autosuggest-accept
+bindkey '^k' autosuggest-execute
+bindkey '^h' autosuggest-clear
+
+# -------------
 # RVM
 #
 # Make sure this is the last PATH variable change.
