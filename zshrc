@@ -104,6 +104,7 @@ alias la='ls -a --color=auto'
 alias ll='ls -1a --color=auto'
 alias lah='ls -lah --color=auto'
 alias dotconfig="cd ~/.dotfiles"
+alias dotclean="rm ~/.Brewfile ~/.gitconfig ~/.gitignore_global ~/.vimrc ~/.zshrc && rm -rf ~/.config && rm -rf ~/.vim"
 alias zshconfig="nvim ~/.zshrc"
 alias vimconfig="nvim ~/.vimrc"
 alias vim="nvim"

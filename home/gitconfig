@@ -1,12 +1,12 @@
 [user]
-	name = Chase Conklin
-	email = developer@chasemconklin.com
+  name = Chase Conklin
+  email = developer@chasemconklin.com
 [color]
   status = auto
   branch = auto
-	ui = true
+  ui = true
 [core]
-	excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore_global
 [alias]
   s = status
   b = branch
@@ -21,4 +21,4 @@
   diff = diff-so-fancy | less --tabs=1,5 -RFX
   show = diff-so-fancy | less --tabs=1,5 -RFX
 [pull]
-	rebase = false
+  rebase = false

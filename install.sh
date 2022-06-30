@@ -49,7 +49,7 @@ fi
 # Set up Brewfile
 echo "Setting up .Brewfile..."
 if [ ! -L ${HOME}/.Brewfile ]; then
-  ln -s $CONFIG_DIR}/Brewfile ${HOME}/.Brewfile
+  ln -s ${CONFIG_DIR}/${comptype}/Brewfile ${HOME}/.Brewfile
   echo ".Brewfile has been symlinked"
 else
   echo ".Brewfile has already been symlinked"
@@ -89,9 +89,9 @@ fi
 
 # Set up Neovim
 echo "Setting up Neovim..."
-if [ ! [ -L {$HOME}/.config/nvim && -d {$HOME}/.config/nvim ] ]; then
+if [[ ! -L {$HOME}/.config/nvim ]]; then
   ln -s ${CONFIG_DIR}/nvim ${HOME}/.config
-  nvim -c ":PlugInstall | :qa!"
+  nvim -c ":source ~/.vimrc | :PlugInstall | :qa!"
 else
   echo "Neovim has already been set up"
 fi
@@ -99,7 +99,7 @@ fi
 # Set up other dotfiles
 echo "Setting up other dotfiles..."
 if [ ! -L ${HOME}/.gitconfig ]; then
-  ln -s ${CONFIG_DIR}/.gitconfig ${HOME}/.gitconfig
+  ln -s ${CONFIG_DIR}/${comptype}/.gitconfig ${HOME}/.gitconfig
   echo ".gitconfig has been symlinked"
 else
   echo ".gitconfig has already been symlinked"
@@ -112,26 +112,8 @@ else
   echo ".gitignore_global has already been symlinked"
 fi
 
-if [ ! -L ${HOME}/.tmux.conf ]; then
-  ln -s ${CONFIG_DIR}/.tmux.conf ${HOME}/.tmux.conf
-  echo ".tmux.conf has been symlinked"
-else
-  echo ".tmux.conf has already been symlinked"
-fi
-
-# Set up tmuxinator.zsh
-if [ ! -d {$HOME}/.bin ]; then
-  mkdir ${HOME}/.bin
-fi
-
-if [ ! -L ${HOME}/.bin/.tmuxinator.zsh ]; then
-  ln -s ${CONFIG_DIR}/tmuxinator.zsh ${HOME}/.bin/tmuxinator.zsh
-else
-  echo "Tmuxinator.zsh files is already installed"
-fi
-
 # Set up Karabiner Elements configuration
-if [ ! [ -L {$HOME}/.config/karabiner && -d {$HOME}/.config ] ]; then
+if [[ ! -L {$HOME}/.config/karabiner && -d {$HOME}/.config ]]; then
  ln -s ${CONFIG_DIR}/karabiner ${HOME}/.config
 else
   echo "Karabiner configuration has already been symlinked"
