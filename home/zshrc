@@ -14,8 +14,8 @@ export KEYTIMEOUT=1
 # ------------
 # Completion
 #
-# Setting the the style and options for zsh completion
-# Commands taken from https://thevaluable.dev/zsh-completion-guide-examples/
+# Commands that set the the style and options for zsh completion.
+# Reference: https://thevaluable.dev/zsh-completion-guide-examples/
 # ------------
 
 # Initialize zsh completion
@@ -36,8 +36,8 @@ setopt COMPLETE_IN_WORD
 # ------------
 # History
 #
-# Remove any duplicates in history while searching
-# Configuration is from https://ianyepan.github.io/posts/moving-away-from-ohmyzsh
+# Settings that remove any duplicates in history while searching.
+# Reference: https://ianyepan.github.io/posts/moving-away-from-ohmyzsh
 # ------------
 
 HISTSIZE=5000
@@ -55,8 +55,8 @@ setopt hist_find_no_dups
 # ------------
 # Internal Utility Functions
 #
-# Functions for use in setting some variables and aliases
-# Pulled from https://github.com/statico/dotfiles/blob/main/.zshrc
+# Functions for use in setting some variables and aliases.
+# Reference: https://github.com/statico/dotfiles/blob/main/.zshrc
 # ------------
 
 # Returns whether the given command is executable or aliased.
@@ -74,7 +74,9 @@ _versionof() {
 }
 
 # ------------
+#
 # Environment Variables
+#
 # ------------
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -174,6 +176,10 @@ zinit light "zsh-users/zsh-syntax-highlighting"
 
 # -------------
 # zsh-autosuggestions
+#
+# Fish-like fast/unobtrusive autosuggestions for zsh.
+# It suggests commands as you type based on history and completions.
+# Documentation: https://github.com/zsh-users/zsh-autosuggestions/#key-bindings
 # -------------
 
 bindkey '^l' autosuggest-accept
@@ -189,5 +195,8 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # -------------
 # Starship Prompt
+#
+# The minimal, blazing-fast, and infinitely customizable prompt for any shell!
+# Documentation: https://starship.rs/config/
 # -------------
 eval "$(starship init zsh)"
