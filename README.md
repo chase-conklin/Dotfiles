@@ -1,70 +1,31 @@
-## Setup
+# My Dotfile Configuration
 
-The following commands are all contained in the install.sh file to get my system set up in the event a a clean install of macOS. You will need git installed to clone this repository. The easiest way to install git is to install the XCode Command Line Tools.
+This is my dotfile configuration for Mac. I am hoping to add the ability for these files to adapt whether they are being installed on a Mac or Linux machine.
 
-Executing the script requires the argument of either "work" or "personal" depending on the type of computer that is being set up.
+## Prequisites
 
-```
-# Install Homebrew
-if ! type "brew" > /dev/null; then
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-else
-  echo "Homebrew is already installed"
-fi
+### Install Xcode Command Line Tools
 
-# Install homebrew bundle to execute the Brewfile
-brew tap homebrew/bundle
-if ! brew bundle check --file=~/.dotfiles/Brewfile --no-upgrade ; then
-  brew bundle --file=${CONFIG_DIR}/Brewfile
-else
-  echo "Homebrew depencies are installed"
-fi
+For a brand new machine or a fresh macOS install, you will need to install Xcode Command Line Tools.
 
-# Link vimrc and install vim plugins
-ln -s ${CONFIG_DIR}/.vimrc ${HOME}/.vimrc
-vim -c ":qa"
+Open Terminal.app and enter the following command:
 
-# Set zsh to default
-if [ "$SHELL" != /bin/zsh ]
-then
-  chsh -s $(which zsh);
-else
-  echo "Zsh is already the default shell"
-fi
+```xcode-select --install```
 
-# Install Oh-My-Zsh
-if [ ! -d "${HOME}/.oh-my-zsh" ]; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-else
-  echo "Oh-My-Zsh is already installed"
-fi
+This will install git which will allow the ability to clone the repo from Github.
 
-ln -s ${CONFIG_DIR}/.zshrc.osx ${HOME}/.zshrc
+If the computer is not brand new then you can check if git is already installed by just executing:
 
-# Install Spacehip Theme
-if [ ! -d "${HOME}/.oh-my-zsh/custom/themes/spaceship-prompt" ]; then
-  git clone https://github.com/denysdovhan/spaceship-prompt.git "${ZSH_CUSTOM}/themes/spaceship-prompt"
-else
-  echo "Spaceship theme is already installed"
-fi
+```git```
 
-ln -s "${ZSH_CUSTOM}/themes/spaceship-prompt/spaceship.zsh-theme" "${ZSH_CUSTOM}/themes/spaceship.zsh-theme"
+### Clone the Repository
 
-# Set up dotfiles
-ln -s ${CONFIG_DIR}/.gitconfig ${HOME}/.gitconfig
-ln -s ${CONFIG_DIR}/.gitignore_global ${HOME}/.gitignore_global
-ln -s ${CONFIG_DIR}/.tmux.conf ${HOME}/.tmux.conf
+The repository must be cloned to ```~/.dotfiles``` directory in order for the install script to function properly. This is the directory name that made the most sense to me.
 
-# Install tmuxinator
-if ! type "tmuxinator" > /dev/null; then
-  gpg --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-  curl -sSL https://get.rvm.io | bash -s stable
-  gem install tmuxinator
-  mkdir ${HOME}/.bin
-  cd ${HOME}/.bin
-  curl -O https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.zsh
-else
-  echo "Tmuxinator is already installed"
-fi
+## Installation
 
-echo "Setup complete for Chase's Computer!"
+Once the repository has been cloned, the install script can be executed:
+
+```/bin/zsh install.sh```
+
+TODO: Include list of preferred development technologies and applications.
