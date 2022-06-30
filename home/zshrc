@@ -131,23 +131,6 @@ alias bupbrew='brew update'
 alias bupform='brew upgrade --formulae'
 alias bupcask='brew uprade --cask'
 
-# ------------
-# Tmux
-# ------------
-alias ta='tmux attach -t '
-alias tl='tmux list-sessions'
-alias tn='tmux new -s '
-alias ts='tmux switch -t '
-alias tk='mux stop '
-
-# Load tmuxinator alias file
-BIN_DIR="${HOME}/.bin"
-if [ -f "$BIN_DIR/tmuxinator.zsh" ]; then
-  source ${BIN_DIR}/tmuxinator.zsh
-else
-  echo >&2 "NOTICE: ${BIN_DIR}/tmuxinator.zsh is missing"
-fi
-
 # -------------
 # NVM
 # -------------
