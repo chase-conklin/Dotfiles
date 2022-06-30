@@ -11,7 +11,7 @@ else
 fi
 
 if [ -d ${HOME}/.dotfiles ]; then
-  CONFIG_DIR=${HOME}/.dotfiles/$comptype
+  CONFIG_DIR=${HOME}/.dotfiles
 else
   echo "The .dotfiles directory does not exist. Please clone the dotfiles repo into ~/.dotfiles."
   exit 1
