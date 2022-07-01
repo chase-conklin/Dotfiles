@@ -1,0 +1,24 @@
+[user]
+  name = Chase Conklin
+# email =
+[color]
+  status = auto
+  branch = auto
+  ui = true
+[core]
+  excludesfile = ~/.gitignore_global
+[alias]
+  s = status
+  b = branch
+  c = commit
+  cam = commit -am
+  co = checkout
+  a = add
+  df = diff
+  l = log
+  lsd = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+[pager]
+  diff = diff-so-fancy | less --tabs=1,5 -RFX
+  show = diff-so-fancy | less --tabs=1,5 -RFX
+[pull]
+  rebase = false

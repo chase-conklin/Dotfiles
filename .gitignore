@@ -1,1 +1,5 @@
+# Ignore Apple Files
 .DS_Store
+
+# Ignore work directory to keep content confidential
+/work/*
