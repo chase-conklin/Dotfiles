@@ -1,122 +1,162 @@
 #!/bin/zsh
 
-echo "Is this a home computer or work computer? (Enter 'home' or 'work')"
+# Color Settings
+# Reference: https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
+
+# Reset
+Color_Off='\033[0m'       # Text Reset
+
+# Regular Colors
+Black='\033[0;30m'        # Black
+Red='\033[0;31m'          # Red
+Green='\033[0;32m'        # Green
+Yellow='\033[0;33m'       # Yellow
+Blue='\033[0;34m'         # Blue
+Purple='\033[0;35m'       # Purple
+Cyan='\033[0;36m'         # Cyan
+White='\033[0;37m'        # White
+
+echo -e "Is this a home computer or work computer? (Enter 'home' or 'work')"
 read comptype
 
 if [ $comptype = "work" ] || [ $comptype = "home" ]; then
-  echo "Welcome to Chase's Computer!"
+  echo -e "${Green}Welcome to Chase's Computer!${Color_Off}"
+  sleep 2
 else
-  echo "That is not a valid type of computer." 1>&2
+  echo -e "${Red}That is not a valid type of computer.${Color_Off}" 1>&2
   exit 1
 fi
 
 if [ -d ${HOME}/.dotfiles ]; then
   CONFIG_DIR=${HOME}/.dotfiles
 else
-  echo "The .dotfiles directory does not exist. Please clone the dotfiles repo into ~/.dotfiles."
+  echo -e "${Red}The .dotfiles directory does not exist. Please clone the dotfiles repo into ~/.dotfiles.${Color_Off}"
   exit 1
+fi
+
+# Set up files for work computers using boilerplate in root
+if [[ $comptype = "work" && ! -d ${CONFIG_DIR}/work ]]; then
+  echo -e "Setting up work directory..."
+  sleep 2
+  mkdir ${CONFIG_DIR}/work
+  cp ${CONFIG_DIR}/Brewfile ${CONFIG_DIR}/work/Brewfile
+  cp ${CONFIG_DIR}/gitconfig ${CONFIG_DIR}/work/gitconfig
+  echo -e "${Green}Work directory has been set up.${Color_Off}"
 fi
 
 cd $HOME
 
 # Check if zsh is the active shell
 if [ "$SHELL" != /bin/zsh ]; then
-  echo "Please set zsh as the default shell before you continue."
+  echo -e "${Red}Please set zsh as the default shell before you continue.${Color_Off}"
   exit 1
 fi
 
 # Remove default zshrc and set up custom version
-echo "Setting up .zshrc..."
+echo -e "Setting up .zshrc..."
+sleep 2
 if [ ! -L ${HOME}/.zshrc ]; then
   rm ${HOME}/.zshrc
   ln -s ${CONFIG_DIR}/zshrc ${HOME}/.zshrc
   source ${HOME}/.zshrc
-  echo ".zshrc has been symlinked"
+  echo -e "${Green}.zshrc has been symlinked${Color_Off}"
 else
-  echo ".zshrc has already been symlinked"
+  echo -e "${Red}.zshrc has already been symlinked${Color_Off}"
 fi
 
 # Install Homebrew
-echo "Installing Homebrew..."
+echo -e "Installing Homebrew..."
+sleep 2
 if ! type "brew" > /dev/null; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   brew tap homebrew/bundle
-  echo "Homebrew has been installed"
+  echo -e "${Green}Homebrew has been installed${Color_Off}"
 else
-  echo "Homebrew is already installed"
+  echo -e "${Red}Homebrew is already installed${Color_Off}"
 fi
 
 # Set up Brewfile
-echo "Setting up .Brewfile..."
+echo -e "Setting up .Brewfile..."
+sleep 2
 if [ ! -L ${HOME}/.Brewfile ]; then
   ln -s ${CONFIG_DIR}/${comptype}/Brewfile ${HOME}/.Brewfile
-  echo ".Brewfile has been symlinked"
+  echo -e "${Green}.Brewfile has been symlinked${Color_Off}"
 else
-  echo ".Brewfile has already been symlinked"
+  echo -e "${Red}.Brewfile has already been symlinked${Color_Off}"
 fi
 
 # Install homebrew bundle to execute the Brewfile
-echo "Installing Homebrew dependencies..."
+echo -e "Installing Homebrew dependencies..."
+sleep 2
 if ! brew bundle check -g --no-upgrade ; then
   brew bundle -g
 else
-  echo "Homebrew depencies are installed"
+  echo -e "${Green}Homebrew depencies are installed${Color_Off}"
 fi
 
 # Link vimrc
-echo "Setting up .vimrc..."
+echo -e "Setting up .vimrc..."
+sleep 2
 if [ ! -L ${HOME}/.vimrc ]; then
   rm ${HOME}/.vimrc
   ln -s ${CONFIG_DIR}/vimrc ${HOME}/.vimrc
-  echo ".vimrc has been symlinked to the home directory"
+  echo -e "${Green}.vimrc has been symlinked to the home directory${Color_Off}"
 else
-  echo ".vimrc has already been symlinked"
+  echo -e "${Red}.vimrc has already been symlinked${Color_Off}"
 fi
 
 # Create .config directory if it doesn't exist
-if [ ! -d {$HOME}/.config ]; then
+if [[ ! -d ${HOME}/.config ]]; then
   mkdir ${HOME}/.config
 fi
 
 # Link starship.toml
-echo "Setting up starship.toml..."
+echo -e "Setting up starship.toml..."
+sleep 2
 if [ ! -L ${HOME}/.config/starship.toml ]; then
   ln -s ${CONFIG_DIR}/starship.toml ${HOME}/.config/starship.toml
-  echo "starship.toml has been symlinked to the .config directory"
+  echo -e "${Green}starship.toml has been symlinked to the .config directory${Color_Off}"
 else
-  echo "starship.toml has already been symlinked"
+  echo -e "${Red}starship.toml has already been symlinked${Color_Off}"
 fi
 
 # Set up Neovim
-echo "Setting up Neovim..."
-if [[ ! -L {$HOME}/.config/nvim ]]; then
+echo -e "Setting up Neovim..."
+sleep 2
+if [[ ! -L ${HOME}/.config/nvim ]]; then
   ln -s ${CONFIG_DIR}/nvim ${HOME}/.config
   nvim -c ":source ~/.vimrc | :PlugInstall | :qa!"
+  echo -e "${Green}Neovim setup has been completed${Color_Off}"
 else
-  echo "Neovim has already been set up"
+  echo -e "${Red}Neovim has already been set up"${Color_Off}
 fi
 
 # Set up other dotfiles
-echo "Setting up other dotfiles..."
+echo -e "Setting up other dotfiles..."
+sleep 2
 if [ ! -L ${HOME}/.gitconfig ]; then
   ln -s ${CONFIG_DIR}/${comptype}/.gitconfig ${HOME}/.gitconfig
-  echo ".gitconfig has been symlinked"
+  echo -e "${Green}.gitconfig has been symlinked${Color_Off}"
 else
-  echo ".gitconfig has already been symlinked"
+  echo -e "${Red}.gitconfig has already been symlinked${Color_Off}"
 fi
 
 if [ ! -L ${HOME}/.gitignore_global ]; then
   ln -s ${CONFIG_DIR}/.gitignore_global ${HOME}/.gitignore_global
-  echo ".gitignore_global has been symlinked"
+  echo -e "${Green}.gitignore_global has been symlinked${Color_Off}"
 else
-  echo ".gitignore_global has already been symlinked"
+  echo -e "${Red}.gitignore_global has already been symlinked${Color_Off}"
 fi
 
 # Set up Karabiner Elements configuration
+echo -e "Setting up Karabiner configuration"
+sleep 2
 if [[ ! -L {$HOME}/.config/karabiner && -d {$HOME}/.config ]]; then
  ln -s ${CONFIG_DIR}/karabiner ${HOME}/.config
+ echo -e "${Green}Karabiner configuration has been set up${Color_Off}"
 else
-  echo "Karabiner configuration has already been symlinked"
+  echo -e "${Red}Karabiner configuration has already been symlinked${Color_Off}"
 fi
 
-echo "Setup complete for Chase's Computer!"
+sleep 2
+echo -e "${Green}Setup complete for Chase's Computer!${Color_Off}"
