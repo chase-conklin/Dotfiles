@@ -135,7 +135,7 @@ fi
 echo -e "Setting up other dotfiles..."
 sleep 2
 if [ ! -L ${HOME}/.gitconfig ]; then
-  ln -s ${CONFIG_DIR}/${comptype}/.gitconfig ${HOME}/.gitconfig
+  ln -s ${CONFIG_DIR}/${comptype}/gitconfig ${HOME}/.gitconfig
   echo -e "${Green}.gitconfig has been symlinked${Color_Off}"
 else
   echo -e "${Red}.gitconfig has already been symlinked${Color_Off}"
