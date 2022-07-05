@@ -142,7 +142,7 @@ else
 fi
 
 if [ ! -L ${HOME}/.gitignore_global ]; then
-  ln -s ${CONFIG_DIR}/.gitignore_global ${HOME}/.gitignore_global
+  ln -s ${CONFIG_DIR}/gitignore_global ${HOME}/.gitignore_global
   echo -e "${Green}.gitignore_global has been symlinked${Color_Off}"
 else
   echo -e "${Red}.gitignore_global has already been symlinked${Color_Off}"
