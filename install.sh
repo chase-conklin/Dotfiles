@@ -151,7 +151,7 @@ fi
 # Set up Karabiner Elements configuration
 echo -e "Setting up Karabiner configuration"
 sleep 2
-if [[ ! -L {$HOME}/.config/karabiner && -d {$HOME}/.config ]]; then
+if [[ ! -L {$HOME}/.config/karabiner ]]; then
  ln -s ${CONFIG_DIR}/karabiner ${HOME}/.config
  echo -e "${Green}Karabiner configuration has been set up${Color_Off}"
 else
