@@ -171,6 +171,11 @@ bindkey '^k' autosuggest-execute
 bindkey '^h' autosuggest-clear
 
 # -------------
+# Coreutils 
+# -------------
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
+# -------------
 # RVM
 #
 # Make sure this is the last PATH variable change.
@@ -184,8 +189,3 @@ export PATH="$PATH:$HOME/.rvm/bin"
 # Documentation: https://starship.rs/config/
 # -------------
 eval "$(starship init zsh)"
-
-# -------------
-# Coreutils 
-# -------------
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
