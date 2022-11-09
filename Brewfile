@@ -23,8 +23,6 @@ brew "unbound"
 brew "gnupg"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Platform built on V8 to build network applications
-brew "node"
 # Manage multiple Node.js versions
 brew "nvm"
 # Search tool like grep and The Silver Searcher
