@@ -1,5 +1,6 @@
-# Ignore Apple Files
+# macOS Files
 .DS_Store
 
-# Ignore work directory to keep content confidential
-/work/*
+# Local Fles
+Brewfile.local
+

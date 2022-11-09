@@ -41,12 +41,25 @@ brew "zellij"
 brew "zinit"
 # General-purpose lossless data-compression library
 brew "zlib"
+# Application launcher and productivity software
+cask "alfred"
 # App to build and share containerized applications and microservices
 cask "docker"
+# Collaborative team software
+cask "figma"
+# Web browser
+cask "firefox-developer-edition"
+# Developer targeted fonts with a high number of glyphs
 cask "font-fira-code-nerd-font"
+# Web browser
+cask "google-chrome"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Keyboard customizer
 cask "karabiner-elements"
+# Local development environment and DevOps tool built on Docker
+cask "lando"
+# Text editor for code, markup and prose
+cask "sublime-text"
 # Open-source code editor
 cask "visual-studio-code"

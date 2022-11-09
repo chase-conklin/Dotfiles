@@ -1,11 +1,21 @@
-# Editors #
+# Editors
 *.idea
 
+# macOS Files
 *.DS_Store
+
+# VIM Files
 *.swp
 *.swo
-*/node_modules
-package-lock.json
 
-composer.phar
+# Package Directories
+*/node_modules
+*/vendor
+
+# Local Files
+.lando.local.yml
+.Brewfile.local
+
+# Fonts
+*/fonts/
 
