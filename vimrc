@@ -27,13 +27,14 @@ Plug 'mattn/emmet-vim'
 Plug 'mhinz/vim-signify'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'tomtom/tcomment_vim'
 
 " Syntax & Language
+Plug 'dense-analysis/ale'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'lumiliet/vim-twig'
+Plug 'nelsyeung/twig.vim'
 Plug 'stanangeloff/php.vim'
-Plug 'vim-syntastic/syntastic'
 
 " Themes
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -55,6 +56,9 @@ set backspace=indent,eol,start
 
 " Set Leader
 let mapleader=","
+
+" Set filetypes
+autocmd BufNewFile,BufRead *.module,*.theme :set filetype=php
 
 " =================
 "
@@ -94,11 +98,27 @@ nnoremap <C-j> <C-W><C-J>
 nnoremap <C-k> <C-W><C-K>
 nnoremap <C-l> <C-W><C-L>
 
+" Copy to Clipboard
+vnoremap <leader>y "+y
+nnoremap <leader>Y "+yg_
+nnoremap <leader>y "+y
+vnoremap <leader>yy "+yy
+
+" Paste from Clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+
 " ==================
 "
 " Plugin Settings
 "
 " ==================
+
+" Ale Settings
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_insert_leave = 0
 
 " IndentLine Settings
 let g:indentLine_char='|'
@@ -114,7 +134,7 @@ nnoremap <leader>r :Rg<CR>
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 " Add custom Rg and Files commands
 command! -bang -nargs=* Rg 
-    \ call fzf#vim#grep('rg --no-ignore --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!bower_components/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+    \ call fzf#vim#grep('rg --no-ignore --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --glob "!node_modules/*" --glob "!/core/*" --glob "!modules/contrib/*" --glob "!vendor/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
 
@@ -132,10 +152,25 @@ let g:gundo_prefer_python3 = 1
 "Airline Settings
 let g:airline_powerline_fonts = 1
 let g:airline_theme='dracula'
-let g:airline#extensions#hunks#enabled=1
+let g:airline_extensions = []
+let g:airline_extensions = ['ale', 'branch', 'hunks']
 
-" Syntastic Settings
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.maxlinenr = '  '
+let g:airline_symbols.linenr = ' :'
+let g:airline_symbols.colnr = ' :'
+let g:airline_symbols.dirty=' '
+
+" TComment Settings
+nnoremap <leader>c :TComment<CR>
+vnoremap <leader>c :TComment<CR>
+

@@ -123,9 +123,12 @@ alias gba="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %
 # ------------
 # Homebrew
 # ------------
-alias bbinstall='brew bundle --global'
-alias bbdump='brew bundle dump --describe --force --global'
-alias bblist='brew bundle list --global --all'
+alias bbinstallg='brew bundle --global'
+alias bbdumpg='brew bundle dump --describe --force --global'
+alias bblistg='brew bundle list --global --all'
+alias bbinstalll='brew bundle --file=~/.Brewfile.local'
+alias bbdumpl='brew bundle dump --describe --force --file=~/.Brewfile.local'
+alias bblistl='brew bundle list --file=~/.Brewfile.local --all'
 alias bform='brew ls --formulae'
 alias bcask='brew ls --cask'
 alias bupbrew='brew update'
@@ -136,7 +139,6 @@ alias bupcask='brew uprade --cask'
 # NVM
 # -------------
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 
 # -------------
 # Fzf
@@ -157,6 +159,7 @@ autoload -Uz _zinit
 
 zinit light "zsh-users/zsh-autosuggestions"
 zinit light "zsh-users/zsh-syntax-highlighting"
+zinit light "lukechilds/zsh-nvm"
 
 # -------------
 # zsh-autosuggestions
@@ -189,3 +192,4 @@ export PATH="$PATH:$HOME/.rvm/bin"
 # Documentation: https://starship.rs/config/
 # -------------
 eval "$(starship init zsh)"
+
