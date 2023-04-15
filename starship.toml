@@ -26,6 +26,11 @@ symbol = " "
 [php]
 symbol = " "
 
+[time]
+disabled = false
+format = '[\[$time\]]($style) '
+time_format = '%r'
+
 [custom.drupal]
 command = "echo -n $( grep -A1 '\"name\": \"drupal/core\"' composer.lock | awk '{ print $2 }' | tail -1 | sed 's/[^0-9.]*//g' )"
 files = ["composer.lock"]

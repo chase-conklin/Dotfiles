@@ -141,6 +141,11 @@ alias bupcask='brew uprade --cask'
 export NVM_DIR="$HOME/.nvm"
 
 # -------------
+# Lunar Vim
+# -------------
+export PATH="$HOME/.local/bin:$PATH"
+
+# -------------
 # Fzf
 # -------------
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -153,7 +158,10 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
 # A Zsh plugin manager in active development
 # Documentation: https://github.com/zdharma-continuum/zinit
 # -------------
-source /usr/local/opt/zinit/zinit.zsh
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
@@ -169,9 +177,7 @@ zinit light "lukechilds/zsh-nvm"
 # Documentation: https://github.com/zsh-users/zsh-autosuggestions/#key-bindings
 # -------------
 
-bindkey '^l' autosuggest-accept
-bindkey '^k' autosuggest-execute
-bindkey '^h' autosuggest-clear
+bindkey '^ ' autosuggest-accept
 
 # -------------
 # Coreutils 
@@ -193,3 +199,13 @@ export PATH="$PATH:$HOME/.rvm/bin"
 # -------------
 eval "$(starship init zsh)"
 
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk
