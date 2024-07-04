@@ -1,5 +1,4 @@
 -- Plugin: https://github.com/nvim-telescope/telescope.nvim
--- Dependency: https://github.com/nvim-lua/plenary.nvim
 
 return {
   {

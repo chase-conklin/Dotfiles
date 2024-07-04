@@ -1,3 +1,5 @@
+-- Plugin: https://github.com/startup-nvim/startup.nvim
+
 return {
   {
     'startup-nvim/startup.nvim',

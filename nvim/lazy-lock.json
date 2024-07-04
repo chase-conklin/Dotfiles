@@ -2,6 +2,7 @@
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
   "bufferline.nvim": { "branch": "main", "commit": "99337f63f0a3c3ab9519f3d1da7618ca4f91cffe" },
   "dracula.nvim": { "branch": "main", "commit": "8d8bddb8814c3e7e62d80dda65a9876f97eb699c" },
+  "gitsigns.nvim": { "branch": "main", "commit": "39b5b6f48bde0595ce68007ffce408c5d7ac1f79" },
   "hererocks": { "branch": "master", "commit": "8bd2fcfdd65cfa7535ce39ea372a63b0bdb8e528" },
   "image.nvim": { "branch": "master", "commit": "7d021c94e231d491355f5e724ba357ace296f06d" },
   "lazy.nvim": { "branch": "main", "commit": "a9d7ade203b3f3ee3058c082c62afdf8e4bcb416" },
