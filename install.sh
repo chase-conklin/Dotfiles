@@ -51,6 +51,8 @@ echo -e "Installing Homebrew..."
 sleep 2
 if ! type "brew" > /dev/null; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/chase.conklin/.zprofile
+  eval "$(/opt/homebrew/bin/brew shellenv)"
   brew tap homebrew/bundle
   echo -e "${Green}Homebrew has been installed${Color_Off}"
 else
@@ -61,9 +63,8 @@ fi
 echo -e "Setting up .Brewfile..."
 sleep 2
 if [ ! -L ${HOME}/.Brewfile ]; then
-  ln -s ${CONFIG_DIR}/Brewfile ${HOME}/.Brewfile
   cp ${CONFIG_DIR}/Brewfile ${CONFIG_DIR}/Brewfile.local
-  ln -s ${CONFIG_DIR}/Brewfile.local ${HOME}/.Brewfile.local
+  ln -s ${CONFIG_DIR}/Brewfile.local ${HOME}/.Brewfile
   echo -e "${Green}.Brewfile has been symlinked${Color_Off}"
 else
   echo -e "${Red}.Brewfile has already been symlinked${Color_Off}"
@@ -132,8 +133,8 @@ fi
 echo -e "Setting up Karabiner configuration"
 sleep 2
 if [[ ! -L {$HOME}/.config/karabiner ]]; then
- ln -s ${CONFIG_DIR}/karabiner ${HOME}/.config
- echo -e "${Green}Karabiner configuration has been set up${Color_Off}"
+  ln -s ${CONFIG_DIR}/karabiner ${HOME}/.config
+  echo -e "${Green}Karabiner configuration has been set up${Color_Off}"
 else
   echo -e "${Red}Karabiner configuration has already been symlinked${Color_Off}"
 fi
