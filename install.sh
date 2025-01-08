@@ -133,7 +133,8 @@ fi
 echo -e "Setting up Karabiner configuration"
 sleep 2
 if [[ ! -L {$HOME}/.config/karabiner ]]; then
-  ln -s ${CONFIG_DIR}/karabiner ${HOME}/.config
+  mkdir ~/.config/karabiner
+  ln -s ${CONFIG_DIR}/karabiner.json ${HOME}/.config/karabiner
   echo -e "${Green}Karabiner configuration has been set up${Color_Off}"
 else
   echo -e "${Red}Karabiner configuration has already been symlinked${Color_Off}"
